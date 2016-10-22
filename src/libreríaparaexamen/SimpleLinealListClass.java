@@ -1,13 +1,15 @@
 package libreríaparaexamen;
 
+import java.util.Random;
+
 /**
  *
  * @author OscarNedzelsky   A00513376
  */
 public class SimpleLinealListClass <T> {
     //Atributos
-    NodeClass first;
-    NodeClass last;
+    listaencadenadalineal.NodeClass first;
+    listaencadenadalineal.NodeClass last;
     
     //Métodos
     
@@ -17,7 +19,7 @@ public class SimpleLinealListClass <T> {
     }
     
     public void insertFirst(T n){
-        NodeClass node = new NodeClass(n);
+        listaencadenadalineal.NodeClass node = new listaencadenadalineal.NodeClass(n);
         if (isEmpty()) {
             first = node;
             last = node;
@@ -29,16 +31,21 @@ public class SimpleLinealListClass <T> {
     }
     
     public void insertLast(T n) {
-        NodeClass node = new NodeClass(n);
+        listaencadenadalineal.NodeClass node = new listaencadenadalineal.NodeClass(n);
+        double rnd = 5.00 + (double)(Math.random() * 40.00);
         if (isEmpty()) {
             first = node;
             last = node;
+            node.setPrecio(rnd);
         } else {
             last.setNext(node);
             //last.next = node;
             last = node;
+            node.setPrecio(rnd);
         }
     }
+    
+    
     
     public void eraseLast() {
         if(isEmpty()){
@@ -48,7 +55,7 @@ public class SimpleLinealListClass <T> {
             first = null;
             last = null;
         } else {
-            NodeClass aux = first;
+            listaencadenadalineal.NodeClass aux = first;
             while (aux.getNext() != last){
                 aux = aux.getNext();
             }
@@ -65,13 +72,13 @@ public class SimpleLinealListClass <T> {
                 first = null;
                 last = null;
             } else {
-                NodeClass aux = first;
+                listaencadenadalineal.NodeClass aux = first;
                 first = aux.getNext();
             }
     }
     
     public void eraseNode(T data) {
-        NodeClass aux;
+        listaencadenadalineal.NodeClass aux;
         if (isEmpty()){
             System.out.println("La lista está vacía.\n");
         } else {
@@ -95,15 +102,26 @@ public class SimpleLinealListClass <T> {
     
     public void showList(){
         if (isEmpty() == false){
-            NodeClass aux = first;
+            listaencadenadalineal.NodeClass aux = first;
             while (aux != null){
-                System.out.print("[" + aux.data + "] ");
+                System.out.println("[Producto " + aux.data + " , $" + aux.precio + "]");
                 aux = aux.next;
             }
             System.out.println("\n");
         } else {
             System.out.println("La lista está vacía.\n");
         }
+    }
+    
+    public double searchPrice(T data){
+        listaencadenadalineal.NodeClass aux = first;
+        while (aux.getData() != data && aux != null){
+                aux = aux.getNext();
+                if (aux.getData() == data) {
+                    return aux.getPrecio();
+                }
+            }
+        return 0;
     }
     
     private boolean isEmpty() {

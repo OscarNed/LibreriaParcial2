@@ -7,6 +7,8 @@ package libreríaparaexamen;
 public class NodeClass <T> {
     //Atributos
     T data;
+    double precio;
+    int cantidad;
     NodeClass next;
     
     //Métodos
@@ -14,11 +16,21 @@ public class NodeClass <T> {
     //Constructor
     public NodeClass (T data){
         this.data = data;
+        this.precio = precio;
+        this.cantidad = cantidad;
         this.next = null;
     }
     
     public T getData (){
         return data;
+    }
+    
+    public double getPrecio (){
+        return precio;
+    }
+    
+    public int getCantidad(){
+        return cantidad;
     }
     
     public NodeClass getNext (){
@@ -27,6 +39,14 @@ public class NodeClass <T> {
     
     public void setData (T data){
         this.data = data;
+    }
+    
+    public void setPrecio (double precio){
+        this.precio = precio;
+    }
+    
+    public void setCantidad (int cantidad){
+        this.cantidad = cantidad;
     }
     
     public void setNext (NodeClass next){
